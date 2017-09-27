@@ -183,6 +183,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
 
     <bundle>mvn:org.opendaylight.alto.basic/alto-auto-maps-api/${project.version}</bundle>
     <bundle>mvn:org.opendaylight.alto.basic/alto-auto-maps-impl/${project.version}</bundle>
+    <bundle>mvn:org.opendaylight.alto.basic/alto-auto-maps-cli/${project.version}</bundle>
   </feature>
 
   <feature name='odl-alto-nonstandard-types' version='${project.version}'

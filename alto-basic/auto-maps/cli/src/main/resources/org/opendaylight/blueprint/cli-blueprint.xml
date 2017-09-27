@@ -15,8 +15,13 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
     odl:type="default" />
 
+  <!-- Inject altoAutoMapsRpcService implemented in -->
+  <odl:rpc-service id="aamRPC" interface="org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.alto.auto.maps.rpc.rev150105.AltoAutoMapsRpcService"/>
+  <!-- -->
+
   <bean id="cliCommandsImpl" class="org.opendaylight.alto.basic.cli.impl.AltoAutoMapsCliCommandsImpl">
     <argument ref="dataBroker" />
+    <argument ref="aamRPC" />
   </bean>
   <service ref="cliCommandsImpl" odl:type="default"
     interface="org.opendaylight.alto.basic.cli.api.AltoAutoMapsCliCommands" />
@@ -24,6 +29,12 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
     <command name="test-command">
       <action class="org.opendaylight.alto.basic.cli.commands.AltoAutoMapsCliTestCommand">
+        <argument ref="cliCommandsImpl"/>
+      </action>
+    </command>
+    <!-- Register "networkmap:add" command -->
+    <command name="networkmap:add">
+      <action class="org.opendaylight.alto.basic.cli.commands.AltoAutoNetworkMapAddCommand">
         <argument ref="cliCommandsImpl"/>
       </action>
     </command>

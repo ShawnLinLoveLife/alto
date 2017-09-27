@@ -23,6 +23,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <packaging>bundle</packaging>
 
   <properties>
+    <jung2.version>2.0.1</jung2.version>
     <mdsal.version>1.5.1-Carbon</mdsal.version>
     <l2switch.version>0.5.1-Carbon</l2switch.version>
   </properties>
@@ -68,6 +69,17 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
       <groupId>org.opendaylight.l2switch.addresstracker</groupId>
       <artifactId>addresstracker-model</artifactId>
       <version>${l2switch.version}</version>
+    </dependency>
+
+    <!-- Map calculation-->
+    <dependency>
+      <groupId>org.opendaylight.controller.thirdparty</groupId>
+      <artifactId>net.sf.jung2</artifactId>
+      <version>${jung2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
     </dependency>
 
     <!-- Testing Dependencies -->

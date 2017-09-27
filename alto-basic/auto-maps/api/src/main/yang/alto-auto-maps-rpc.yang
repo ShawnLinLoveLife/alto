@@ -1,0 +1,48 @@
+module alto-auto-maps-rpc {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:alto-auto-maps:rpc";
+    prefix "alto-auto-maps-rpc";
+
+    import "alto-basic-types" {
+        prefix "alto-types";
+    }
+
+    revision "2015-01-05" {
+        description "Initial revision of messenger RPC model";
+    }
+
+    choice network-map-type {
+        default anchor-based;
+        case anchor-based {
+            leaf-list anchors {
+                type string;
+                description "A list of anchors name";
+            }
+        }
+    }
+
+    rpc config-network-map {
+        description
+            "Generate a networkmap";
+        input {
+            leaf resource-id {
+                mandatory true;
+                type alto-types:resource-id;
+            }
+            choice network-map-type {
+                default anchor-based;
+                case anchor-based {
+                    leaf-list anchors {
+                        type alto-types:pid-name;
+                        description "A list of anchors name";
+                    }
+                }
+            }
+        }
+        output {
+            leaf error-code {
+                type string;
+            }
+        }
+    }
+}

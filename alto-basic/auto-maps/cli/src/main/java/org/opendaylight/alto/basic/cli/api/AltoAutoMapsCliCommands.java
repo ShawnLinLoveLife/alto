@@ -6,7 +6,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 package org.opendaylight.alto.basic.cli.api;
-
+import java.util.*;
 public interface AltoAutoMapsCliCommands {
 
     /**
@@ -14,4 +14,5 @@ public interface AltoAutoMapsCliCommands {
      * Below method is just an example
      */
     Object testCommand(Object testArgument);
+    Object generateNetworkMap(String resourceId, String type, Map<Object, List<String>> options);
 }

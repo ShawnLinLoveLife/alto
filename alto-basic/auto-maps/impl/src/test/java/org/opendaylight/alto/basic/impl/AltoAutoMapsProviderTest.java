@@ -11,17 +11,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.opendaylight.controller.md.sal.binding.api.DataBroker;
+import org.opendaylight.controller.md.sal.binding.api.NotificationService;
 
 import static org.mockito.Mockito.mock;
 
 public class AltoAutoMapsProviderTest {
 
     private DataBroker dataBroker = mock(DataBroker.class);
+    private NotificationService notificationService = mock(NotificationService.class);
     private AltoAutoMapsProvider provider;
 
     @Before
     public void setUp() throws Exception {
-        provider = new AltoAutoMapsProvider(dataBroker);
+        provider = new AltoAutoMapsProvider(dataBroker, notificationService);
     }
 
     @After

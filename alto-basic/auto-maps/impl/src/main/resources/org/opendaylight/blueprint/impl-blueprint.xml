@@ -15,10 +15,22 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"
     odl:type="default" />
 
+  <!-- Our module needs notification service of ODL system-->
+  <reference id="notificationService"
+             interface="org.opendaylight.controller.md.sal.binding.api.NotificationService"/>
+
   <bean id="provider"
     class="org.opendaylight.alto.basic.impl.AltoAutoMapsProvider"
     init-method="init" destroy-method="close">
     <argument ref="dataBroker" />
+    <!-- We refered it here -->
+    <argument ref="notificationService" />
   </bean>
 
+  <!-- Tell the system that our module provide a RPC implementation-->
+  <bean id="aamRPC"
+        class="org.opendaylight.alto.basic.impl.AltoAutoMapsService">
+    <argument ref="provider" />
+  </bean>
+  <odl:rpc-implementation ref="aamRPC"/>
 </blueprint>

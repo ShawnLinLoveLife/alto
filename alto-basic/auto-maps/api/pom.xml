@@ -20,4 +20,30 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <artifactId>alto-auto-maps-api</artifactId>
   <version>0.4.1-Carbon</version>
   <packaging>bundle</packaging>
+
+  <dependencies>
+    <!-- For network map -->
+    <dependency>
+      <groupId>org.opendaylight.alto.basic</groupId>
+      <artifactId>alto-manual-maps-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.alto.core</groupId>
+      <artifactId>alto-basic-types</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.mdsal.model</groupId>
+      <artifactId>ietf-inet-types-2013-07-15</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.mdsal.model</groupId>
+      <artifactId>ietf-yang-types-20130715</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.mdsal.model</groupId>
+      <artifactId>yang-ext</artifactId>
+    </dependency>
+  </dependencies>
 </project>

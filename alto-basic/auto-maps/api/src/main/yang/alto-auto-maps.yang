@@ -1,9 +1,36 @@
 module alto-auto-maps {
     yang-version 1;
-    namespace "urn:alto:auto:maps";
+    namespace "urn:opendaylight:params:xml:ns:yang:alto-auto-maps";
     prefix "alto-auto-maps";
+
+    import "alto-networkmap-config" {
+        prefix "networkmap-config";
+    }
+
+    import "alto-basic-types" {
+        prefix "alto-types";
+    }
 
     revision "2015-01-05" {
         description "Initial revision of alto-auto-maps model";
+    }
+
+    container config-network-map-records {
+    list config-network-map-record {
+        key "resource-id";
+        leaf resource-id {
+            mandatory true;
+            type alto-types:resource-id;
+        }
+        choice network-map-type {
+            default anchor-based;
+            case anchor-based {
+                leaf-list anchors {
+                    type alto-types:pid-name;
+                    description "A list of anchors name";
+                }
+            }
+        }
+    }
     }
 }
